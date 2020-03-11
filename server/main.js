@@ -42,6 +42,12 @@ app.get("/hello", (req, res) => {
 	return res.send("Hello CodeLab");
 });
 
+/* handle error */
+app.use(function(err, req, res, next) {
+	console.error(err.stack);
+	res.status(500).send("Something broke!");
+});
+
 app.listen(port, () => {
 	console.log("Express is listening on port", port);
 });
